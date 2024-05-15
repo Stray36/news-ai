@@ -1,0 +1,50 @@
+﻿@page "/newssummary"
+@inject NewsService NewsService
+
+<h3>Find News</h3>
+
+<input type="text" @bind="searchTerm" placeholder="Search news..." class="form-control mb-3" />
+<button @onclick="SearchNews" class="btn btn-primary mb-3">Search</button>
+
+@if (newsItems == null)
+{
+    <p>Loading...</p>
+}
+else if (newsItems.Length == 0)
+{
+    <p>No news available at the moment.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in newsItems)
+        {
+            <li>
+                <h4><a href="/newsdetail/@item.Id">@item.Title</a></h4>
+                <p>@item.Summary</p>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private NewsService.NewsItem[]? newsItems;
+    private string searchTerm = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        newsItems = await NewsService.GetNewsAsync();
+    }
+
+    private async Task SearchNews()
+    {
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            newsItems = await NewsService.SearchNewsAsync(searchTerm);
+        }
+        else
+        {
+            newsItems = await NewsService.GetNewsAsync();
+        }
+    }
+}

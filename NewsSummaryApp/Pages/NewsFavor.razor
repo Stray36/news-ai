@@ -1,0 +1,36 @@
+﻿@page "/newsfavorites"
+@inject NewsService NewsService
+
+<h3>News Favorites</h3>
+
+<p>Here are your favorite news articles.</p>
+
+@if (favoriteNewsItems == null)
+{
+    <p>Loading...</p>
+}
+else if (favoriteNewsItems.Length == 0)
+{
+    <p>No favorite news available at the moment.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in favoriteNewsItems)
+        {
+            <li>
+                <h4>@item.Title</h4>
+                <p>@item.Summary</p>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private NewsService.NewsItem[]? favoriteNewsItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        favoriteNewsItems = await NewsService.GetFavoriteNewsAsync();
+    }
+}

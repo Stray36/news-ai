@@ -1,0 +1,22 @@
+@NewsApi_HostAddress = http://localhost:5121
+
+GET {{NewsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# 搜索新闻 
+GET https://localhost:5121/api/news/search?query=example
+Accept: application/json
+
+###
+
+# 获取收藏新闻
+GET https://localhost:5121/api/news/favorites
+Accept: application/json
+
+###
+
+# 获取推送新闻
+GET https://localhost:5121/api/news/pushed
+Accept: application/json

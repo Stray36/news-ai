@@ -1,0 +1,36 @@
+﻿@page "/newspush"
+@inject NewsService NewsService
+
+<h3>News Push</h3>
+
+<p>Here you can configure your news push settings and see the latest pushed news.</p>
+
+@if (newsItems == null)
+{
+    <p>Loading...</p>
+}
+else if (newsItems.Length == 0)
+{
+    <p>No news available at the moment.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in newsItems)
+        {
+            <li>
+                <h4>@item.Title</h4>
+                <p>@item.Summary</p>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private NewsService.NewsItem[]? newsItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        newsItems = await NewsService.GetNewsAsync();
+    }
+}

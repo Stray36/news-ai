@@ -1,0 +1,27 @@
+﻿@page "/newsdetail/{id:int}"
+@inject NewsService NewsService
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private NewsService.NewsItem? newsItem;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        newsItem = await NewsService.GetNewsDetailAsync(Id);
+    }
+}
+
+<h3>News Detail</h3>
+
+@if (newsItem == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div>
+        <h4>@newsItem.Title</h4>
+        <p>@newsItem.Summary</p>
+    </div>
+}
