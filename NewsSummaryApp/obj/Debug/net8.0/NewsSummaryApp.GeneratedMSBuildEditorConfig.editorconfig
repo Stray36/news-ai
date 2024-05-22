@@ -13,55 +13,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = NewsSummaryApp
 build_property.RootNamespace = NewsSummaryApp
-build_property.ProjectDir = E:\NewsSummaryApp\
+build_property.ProjectDir = D:\News\NewsSummaryApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\NewsSummaryApp
+build_property.MSBuildProjectDirectory = D:\News\NewsSummaryApp
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/NewsSummaryApp/App.razor]
+[D:/News/NewsSummaryApp/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/NewsSummaryApp/Pages/Home.razor]
+[D:/News/NewsSummaryApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/NewsDetail.razor]
+[D:/News/NewsSummaryApp/Pages/NewsDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c0RldGFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/NewsFavor.razor]
+[D:/News/NewsSummaryApp/Pages/NewsFavor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c0Zhdm9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/NewsPush.razor]
+[D:/News/NewsSummaryApp/Pages/NewsPush.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c1B1c2gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/NewsSummary.razor]
+[D:/News/NewsSummaryApp/Pages/NewsSummary.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c1N1bW1hcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/NewsSummaryApp/_Imports.razor]
+[D:/News/NewsSummaryApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/NewsSummaryApp/Layout/MainLayout.razor]
+[D:/News/NewsSummaryApp/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-v2yuuirorz
 
-[E:/NewsSummaryApp/Layout/NavMenu.razor]
+[D:/News/NewsSummaryApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-xajc1aik2n

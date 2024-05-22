@@ -1,59 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NewsApi.Models;
-using NewsApi.Services;
-using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace NewsApi.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class NewsController : ControllerBase
     {
-        private readonly NewsService _newsService;
+        private readonly HttpClient _httpClient;
 
-        public NewsController(NewsService newsService)
+        public NewsController(HttpClient httpClient)
         {
-            _newsService = newsService;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<NewsItem>>> GetNews()
-        {
-            var newsItems = await _newsService.GetNewsAsync();
-            return Ok(newsItems);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<NewsItem>> GetNewsById(int id)
-        {
-            var newsItem = await _newsService.GetNewsByIdAsync(id);
-            if (newsItem == null)
-            {
-                return NotFound();
-            }
-            return Ok(newsItem);
+            _httpClient = httpClient;
         }
 
         [HttpGet("search")]
-        public async Task<ActionResult<List<NewsItem>>> SearchNews([FromQuery] string query)
+        public async Task<IActionResult> GetSearchResults(string query)
         {
-            var newsItems = await _newsService.SearchNewsAsync(query);
-            return Ok(newsItems);
-        }
+            var requestUrl = $"https://search.lepton.run/api/query?q={query}";
+            var response = await _httpClient.GetFromJsonAsync<LeptonResponse>(requestUrl);
 
-        [HttpGet("favorites")]
-        public async Task<ActionResult<List<NewsItem>>> GetFavoriteNews()
-        {
-            var newsItems = await _newsService.GetFavoriteNewsAsync();
-            return Ok(newsItems);
-        }
+            if (response == null)
+            {
+                return NotFound();
+            }
 
-        [HttpGet("pushed")]
-        public async Task<ActionResult<List<NewsItem>>> GetPushedNews()
-        {
-            var newsItems = await _newsService.GetPushedNewsAsync();
-            return Ok(newsItems);
+            return Ok(response.Results);
         }
+    }
+
+    public class LeptonResponse
+    {
+        public List<string> Results { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NewsApi\\NewsApi.csproj": {}
+    "D:\\News\\NewsApi\\NewsApi.csproj": {}
   },
   "projects": {
-    "E:\\NewsApi\\NewsApi.csproj": {
+    "D:\\News\\NewsApi\\NewsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NewsApi\\NewsApi.csproj",
+        "projectUniqueName": "D:\\News\\NewsApi\\NewsApi.csproj",
         "projectName": "NewsApi",
-        "projectPath": "E:\\NewsApi\\NewsApi.csproj",
+        "projectPath": "D:\\News\\NewsApi\\NewsApi.csproj",
         "packagesPath": "C:\\Users\\宇轩\\.nuget\\packages\\",
-        "outputPath": "E:\\NewsApi\\obj\\",
+        "outputPath": "D:\\News\\NewsApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\宇轩\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,10 @@
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.2, )"
             },

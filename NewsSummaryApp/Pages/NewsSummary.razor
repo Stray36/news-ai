@@ -1,50 +1,61 @@
 ﻿@page "/newssummary"
-@inject NewsService NewsService
+@using System.Text.Json
+@using System.Text
+@inject HttpClient Http
 
 <h3>Find News</h3>
 
-<input type="text" @bind="searchTerm" placeholder="Search news..." class="form-control mb-3" />
-<button @onclick="SearchNews" class="btn btn-primary mb-3">Search</button>
+<div>
+    <input @bind="searchQuery" @bind:event="oninput" placeholder="Search news..." />
+    <button @onclick="SearchNews">Search</button>
+</div>
 
-@if (newsItems == null)
+@if (!string.IsNullOrEmpty(searchResult))
+{
+    <div>
+        <pre>@searchResult</pre>
+    </div>
+}
+else if (isLoading)
 {
     <p>Loading...</p>
 }
-else if (newsItems.Length == 0)
+else if (!string.IsNullOrEmpty(searchQuery) && string.IsNullOrEmpty(searchResult))
 {
-    <p>No news available at the moment.</p>
-}
-else
-{
-    <ul>
-        @foreach (var item in newsItems)
-        {
-            <li>
-                <h4><a href="/newsdetail/@item.Id">@item.Title</a></h4>
-                <p>@item.Summary</p>
-            </li>
-        }
-    </ul>
+    <p>No results found for "@searchQuery".</p>
 }
 
 @code {
-    private NewsService.NewsItem[]? newsItems;
-    private string searchTerm = string.Empty;
-
-    protected override async Task OnInitializedAsync()
-    {
-        newsItems = await NewsService.GetNewsAsync();
-    }
+    private string searchQuery = string.Empty;
+    private string searchResult = string.Empty;
+    private bool isLoading = false;
 
     private async Task SearchNews()
     {
-        if (!string.IsNullOrEmpty(searchTerm))
+        if (!string.IsNullOrEmpty(searchQuery))
         {
-            newsItems = await NewsService.SearchNewsAsync(searchTerm);
-        }
-        else
-        {
-            newsItems = await NewsService.GetNewsAsync();
+            isLoading = true;
+            searchResult = string.Empty;
+
+            try
+            {
+                // 构建请求内容
+                var content = new StringContent(searchQuery, Encoding.UTF8, "application/json");
+                // 发送请求并获取响应
+                var response = await Http.PostAsync("https://localhost:8080/ui/search.html", content);
+                response.EnsureSuccessStatusCode();
+                // 读取响应内容
+                searchResult = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error fetching news: {ex.Message}");
+                searchResult = $"Error: {ex.Message}";
+            }
+            finally
+            {
+                isLoading = false;
+            }
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NewsSummaryApp\\NewsSummaryApp.csproj": {}
+    "D:\\News\\NewsSummaryApp\\NewsSummaryApp.csproj": {}
   },
   "projects": {
-    "E:\\NewsSummaryApp\\NewsSummaryApp.csproj": {
+    "D:\\News\\NewsSummaryApp\\NewsSummaryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NewsSummaryApp\\NewsSummaryApp.csproj",
+        "projectUniqueName": "D:\\News\\NewsSummaryApp\\NewsSummaryApp.csproj",
         "projectName": "NewsSummaryApp",
-        "projectPath": "E:\\NewsSummaryApp\\NewsSummaryApp.csproj",
+        "projectPath": "D:\\News\\NewsSummaryApp\\NewsSummaryApp.csproj",
         "packagesPath": "C:\\Users\\宇轩\\.nuget\\packages\\",
-        "outputPath": "E:\\NewsSummaryApp\\obj\\",
+        "outputPath": "D:\\News\\NewsSummaryApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\宇轩\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,6 +60,14 @@
               "target": "Package",
               "version": "[8.0.2, )",
               "autoReferenced": true
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
