@@ -1,0 +1,346 @@
+﻿<Window x:Class="NewsApp.View.NewsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewsApp.View"
+        mc:Ignorable="d"
+        Title="{Binding News_TextBlock}" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Resources\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0, 1" StartPoint="0, 0">
+                <GradientStop Color = "SteelBlue" Offset="0"/>
+                <GradientStop Color = "WhiteSmoke" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding News_TextBlock}"
+                   HorizontalAlignment="Center"
+                   Margin="10,10,10,0"
+                   FontSize="45"
+                   Style="{StaticResource ResourceKey=HeadlineTextBlock}"/>
+
+
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="3" Margin="0,0,0,10" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="147*"/>
+                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="29*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="476*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                   Grid.Column="0"
+                   Style="{StaticResource ResourceKey=DescriptionLabel}" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="10" Width="10" Content="Country"/>
+
+            <ComboBox
+                      Grid.Column="1"
+                      Margin="10,23,52,0"
+                      ItemsSource="{Binding Countries}"
+                      SelectedItem="{Binding SelectedCountry}"
+                      Style="{StaticResource ResourceKey=ComboBoxStyle}" Height="41" VerticalAlignment="Top" RenderTransformOrigin="0.599,-0.079" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}"
+                                   Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <Grid
+                  Grid.Column="4"
+                  Margin="10,0,10,0" Grid.ColumnSpan="4" Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0"
+                         Margin="0,0,5,0"
+                         Style="{StaticResource ResourceKey=TextBoxStyle}"
+                         AcceptsReturn="True" 
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Text="{Binding SearchLine, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Grid.Column="1"
+                        Content="{Binding Search_Button}"
+                        Margin="5,0,0,0"
+                        Command="{Binding SearchCommand}"
+                        Style="{StaticResource ResourceKey=SearchButton}"/>
+            </Grid>
+
+
+            <Label
+                   Grid.Column="9"
+                   Style="{StaticResource ResourceKey=DescriptionLabel}"
+                   Content="{}" VerticalAlignment="Center" Height="25" Width="10"/>
+            <TextBlock Grid.Column="8" 
+                       Grid.ColumnSpan="2" 
+                       HorizontalAlignment="Left" 
+                       Height="39" 
+                       Margin="50,10,0,0" Grid.Row="1" TextWrapping="Wrap" 
+                       VerticalAlignment="Top" Width="120" FontSize="16" Text="">
+                       <Hyperlink NavigateUri="https://vqgajp1f-my-search.tin.lepton.run" RequestNavigate="Hyperlink_RequestNavigate">
+                            Try Lepton AI?
+                       </Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Label Grid.Column="1"
+               Grid.Row="2"
+               Margin="20,0,0,0"
+               Style="{StaticResource ResourceKey=CallbackLabel}"
+               Content="{Binding CallbackLine, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Grid Grid.Row="3"
+              Grid.Column="0"
+              Grid.RowSpan="2" Margin="0,34,0,0" RenderTransformOrigin="0.462,0.489">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="109*"/>
+                <ColumnDefinition Width="91*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource ResourceKey=ClickableTextBlockStyle}"
+                       Text="{Binding TopHeadlines_TextBlock}"
+                       Margin="10,0,0,0"
+                       FontSize="25"
+                       FontFamily="Times New Roman" Height="29" Width="0">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick"
+                                  Command="{Binding ShowTopHeadlinesCommand}"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+
+            <ItemsControl Grid.Row="1"
+                          Margin="10,0,0,0"
+                          ItemsSource="{Binding Categories}" Grid.ColumnSpan="2">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0,5,0,0">
+                            <TextBlock Style="{StaticResource ResourceKey=ClickableTextBlockStyle}"
+                                       Text="{Binding DisplayName}"
+                                       FontFamily="Times New Roman"
+                                       FontSize="18">
+                                <TextBlock.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick"
+                                                  Command="{Binding DataContext.ShowTopHeadlinesByCategoryCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                  CommandParameter="{Binding}"/>
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Grid.Row="3"
+              Margin="0,0,0,4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       Text="{Binding Filters_TextBlock}"
+                       FontSize="20"
+                       Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+
+            <CheckBox Grid.Column="1"
+                      Grid.Row="0"
+                      Content="{Binding TimeSpan_CheckBox}"
+                      FontSize="14"
+                      IsChecked="{Binding IsTimeSpanEnabled}"
+                      Style="{StaticResource ResourceKey=CheckBoxStyle}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{StaticResource ResourceKey=DescriptionLabel}"
+                   Content="{Binding SortBy_Label}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Style="{StaticResource ResourceKey=DescriptionLabel}"
+                   Content="{Binding From_Label}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="2"
+                   Style="{StaticResource ResourceKey=DescriptionLabel}"
+                   Content="{Binding To_Label}"/>
+
+            <ComboBox Grid.Column="0"
+                      Grid.Row="2"
+                      ItemsSource="{Binding SortFilters}"
+                      SelectedItem="{Binding SelectedSortFilter}"
+                      Style="{StaticResource ResourceKey=ComboBoxStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}"
+                                   Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     Text="{Binding FromDateTime, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource ResourceKey=TextBoxStyle}"/>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="2"
+                     Text="{Binding ToDateTime, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource ResourceKey=TextBoxStyle}"/>
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Grid.Row="4">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Articles}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="Border"
+                                    BorderBrush="{StaticResource PureBlackBrush}"
+                                    Background="{StaticResource WhiteGrayBrush}"
+                                    BorderThickness="2"
+                                    CornerRadius="4"
+                                    Margin="5"
+                                    Height="auto"
+                                    Cursor="Arrow">
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick"
+                                                  Command="{Binding DataContext.OpenArticleInBrowserCommand, 
+                                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                  CommandParameter="{Binding}"/>
+                                </Border.InputBindings>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image Grid.Row="0"
+                                           Source="{Binding ImageSource}"
+                                           Width="550"
+                                           Height="310"
+                                           Margin="25"/>
+
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Title}"
+                                               TextWrapping="Wrap"
+                                               FontSize="18"
+                                               Margin="15"
+                                               Style="{StaticResource ResourceKey=HeadlineTextBlock}"/>
+
+                                    <TextBlock Grid.Row="2"
+                                               TextWrapping="Wrap"
+                                               FontSize="12"
+                                               Margin="15,0,15,0"
+                                               Text="{Binding Description}"
+                                               Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="10"
+                                                   FontStyle="Italic"
+                                                   Margin="20,10,0,5"
+                                                   Text="{Binding PublishedAt}"
+                                                   Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+
+                                        <TextBlock Grid.Column="2"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="0,10,20,5"
+                                                   Text="{Binding Author}"
+                                                   Style="{StaticResource ResourceKey=TextBlockStyle}"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="Border" Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+        <Label Content="Country" HorizontalAlignment="Left" Height="49" Margin="4,50,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="63"/>
+    </Grid>
+</Window>

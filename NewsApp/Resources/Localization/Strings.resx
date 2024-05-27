@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Categories_Business" xml:space="preserve">
+    <value>Business</value>
+  </data>
+  <data name="Categories_Entertainment" xml:space="preserve">
+    <value>Entertainment</value>
+  </data>
+  <data name="Categories_Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="Categories_Science" xml:space="preserve">
+    <value>Science</value>
+  </data>
+  <data name="Categories_Sports" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="Categories_Technology" xml:space="preserve">
+    <value>Technology</value>
+  </data>
+  <data name="Countries_AE" xml:space="preserve">
+    <value>AE</value>
+  </data>
+  <data name="Countries_AR" xml:space="preserve">
+    <value>AR</value>
+  </data>
+  <data name="Countries_AT" xml:space="preserve">
+    <value>AT</value>
+  </data>
+  <data name="Countries_AU" xml:space="preserve">
+    <value>AU</value>
+  </data>
+  <data name="Countries_BE" xml:space="preserve">
+    <value>BE</value>
+  </data>
+  <data name="Countries_BG" xml:space="preserve">
+    <value>BG</value>
+  </data>
+  <data name="Countries_BR" xml:space="preserve">
+    <value>BR</value>
+  </data>
+  <data name="Countries_CA" xml:space="preserve">
+    <value>CA</value>
+  </data>
+  <data name="Countries_CH" xml:space="preserve">
+    <value>CH</value>
+  </data>
+  <data name="Countries_CN" xml:space="preserve">
+    <value>CN</value>
+  </data>
+  <data name="Countries_CO" xml:space="preserve">
+    <value>CO</value>
+  </data>
+  <data name="Countries_CU" xml:space="preserve">
+    <value>CU</value>
+  </data>
+  <data name="Countries_CZ" xml:space="preserve">
+    <value>CZ</value>
+  </data>
+  <data name="Countries_DE" xml:space="preserve">
+    <value>DE</value>
+  </data>
+  <data name="Countries_EG" xml:space="preserve">
+    <value>EG</value>
+  </data>
+  <data name="Countries_FR" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="Countries_GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Countries_GR" xml:space="preserve">
+    <value>GR</value>
+  </data>
+  <data name="Countries_HK" xml:space="preserve">
+    <value>HK</value>
+  </data>
+  <data name="Countries_HU" xml:space="preserve">
+    <value>HU</value>
+  </data>
+  <data name="Countries_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Countries_IE" xml:space="preserve">
+    <value>IE</value>
+  </data>
+  <data name="Countries_IL" xml:space="preserve">
+    <value>IL</value>
+  </data>
+  <data name="Countries_IN" xml:space="preserve">
+    <value>IN</value>
+  </data>
+  <data name="Countries_IT" xml:space="preserve">
+    <value>IT</value>
+  </data>
+  <data name="Countries_JP" xml:space="preserve">
+    <value>JP</value>
+  </data>
+  <data name="Countries_KR" xml:space="preserve">
+    <value>KR</value>
+  </data>
+  <data name="Countries_LT" xml:space="preserve">
+    <value>LT</value>
+  </data>
+  <data name="Countries_LV" xml:space="preserve">
+    <value>LV</value>
+  </data>
+  <data name="Countries_MA" xml:space="preserve">
+    <value>MA</value>
+  </data>
+  <data name="Countries_MX" xml:space="preserve">
+    <value>MX</value>
+  </data>
+  <data name="Countries_MY" xml:space="preserve">
+    <value>MY</value>
+  </data>
+  <data name="Countries_NG" xml:space="preserve">
+    <value>NG</value>
+  </data>
+  <data name="Countries_NL" xml:space="preserve">
+    <value>NL</value>
+  </data>
+  <data name="Countries_NO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="Countries_NZ" xml:space="preserve">
+    <value>NZ</value>
+  </data>
+  <data name="Countries_PH" xml:space="preserve">
+    <value>PH</value>
+  </data>
+  <data name="Countries_PL" xml:space="preserve">
+    <value>PL</value>
+  </data>
+  <data name="Countries_PT" xml:space="preserve">
+    <value>PT</value>
+  </data>
+  <data name="Countries_RO" xml:space="preserve">
+    <value>RO</value>
+  </data>
+  <data name="Countries_RS" xml:space="preserve">
+    <value>RS</value>
+  </data>
+  <data name="Countries_RU" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="Countries_SA" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="Countries_SE" xml:space="preserve">
+    <value>SE</value>
+  </data>
+  <data name="Countries_SG" xml:space="preserve">
+    <value>SG</value>
+  </data>
+  <data name="Countries_SI" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="Countries_SK" xml:space="preserve">
+    <value>SK</value>
+  </data>
+  <data name="Countries_TH" xml:space="preserve">
+    <value>TH</value>
+  </data>
+  <data name="Countries_TR" xml:space="preserve">
+    <value>TR</value>
+  </data>
+  <data name="Countries_TW" xml:space="preserve">
+    <value>TW</value>
+  </data>
+  <data name="Countries_UA" xml:space="preserve">
+    <value>UA</value>
+  </data>
+  <data name="Countries_US" xml:space="preserve">
+    <value>US</value>
+  </data>
+  <data name="Countries_VE" xml:space="preserve">
+    <value>VE</value>
+  </data>
+  <data name="Countries_ZA" xml:space="preserve">
+    <value>ZA</value>
+  </data>
+  <data name="Country_Label" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Filters_TextBlock" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="From_Label" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="IncorrectTimeSpan" xml:space="preserve">
+    <value>Incorrectly set time interval</value>
+  </data>
+  <data name="Localizations_en" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Localizations_uk" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
+  <data name="Localization_Label" xml:space="preserve">
+    <value>Localization</value>
+  </data>
+  <data name="News_TextBlock" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Search_Button" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search_Label" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SortBys_Popularity" xml:space="preserve">
+    <value>Popularity</value>
+  </data>
+  <data name="SortBys_PublishedAt" xml:space="preserve">
+    <value>PublishedAt</value>
+  </data>
+  <data name="SortBys_Relevancy" xml:space="preserve">
+    <value>Relevancy</value>
+  </data>
+  <data name="SortBy_Label" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="TimeSpan_CheckBox" xml:space="preserve">
+    <value>Time span</value>
+  </data>
+  <data name="TopHeadlines_TextBlock" xml:space="preserve">
+    <value>Top headlines</value>
+  </data>
+  <data name="To_Label" xml:space="preserve">
+    <value>To</value>
+  </data>
+</root>

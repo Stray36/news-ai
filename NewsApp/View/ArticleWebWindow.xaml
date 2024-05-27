@@ -1,0 +1,13 @@
+﻿<Window x:Class="NewsApp.View.ArticleWebWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Web = "clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:local="clr-namespace:NewsApp.View"
+        mc:Ignorable="d"
+        Title="Article" Height="450" Width="800">
+    <Grid>
+        <Web:WebView2 Source="{Binding ArticleUrl}"/>
+    </Grid>
+</Window>
