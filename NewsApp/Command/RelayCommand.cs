@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
+// 实现 ICommand 接口，将命令逻辑从视图层分离
 namespace NewsApp.Command
 {
     public class RelayCommand : ICommand

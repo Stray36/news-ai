@@ -19,6 +19,7 @@ namespace NewsApp.ViewModel
 {
     public class NewsViewModel : BaseViewModel
     {
+        // 服务依赖注入
         private readonly NewsService _newsService;
         private readonly SearchLineManagerService _searchLineManagerService;
         private readonly ArticleViewModelFactory _articleViewModelFactory;
@@ -30,6 +31,7 @@ namespace NewsApp.ViewModel
             get { return _articles; }
         }
 
+        // 搜索关键字
         private string searchLine;
         public string SearchLine
         {
@@ -40,7 +42,8 @@ namespace NewsApp.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        
+        // 回调信息
         private string callbackLine;
         public string CallbackLine
         {
@@ -52,11 +55,13 @@ namespace NewsApp.ViewModel
             }
         }
 
+        // 国家集合
         private readonly ObservableCollection<LocalizedEnum<Countries>> _countries;
         public ObservableCollection<LocalizedEnum<Countries>> Countries
         {
             get { return _countries; }
         }
+        // 当前选中国家
         private LocalizedEnum<Countries> selectedCountry;
         public LocalizedEnum<Countries> SelectedCountry
         {
@@ -69,12 +74,14 @@ namespace NewsApp.ViewModel
             }
         }
 
+        // 分类选项
         private readonly ObservableCollection<LocalizedEnum<Categories>> _categories;
         public ObservableCollection<LocalizedEnum<Categories>> Categories
         {
             get { return _categories; }
         }
 
+        // 排序选项
         private readonly ObservableCollection<LocalizedEnum<SortBys>> _sortFilters;
         public ObservableCollection<LocalizedEnum<SortBys>> SortFilters
         {
@@ -112,8 +119,6 @@ namespace NewsApp.ViewModel
             }
         }
 
-
-
         private bool isTimeSpanEnabled;
         public bool IsTimeSpanEnabled
         {
@@ -147,6 +152,7 @@ namespace NewsApp.ViewModel
             }
         }
 
+        // 命令绑定
         public ICommand ShowTopHeadlinesCommand { get; private set; }
         public ICommand ShowTopHeadlinesByCategoryCommand { get; private set; }
         public ICommand OpenArticleInBrowserCommand { get; private set; }
@@ -271,6 +277,7 @@ namespace NewsApp.ViewModel
                              ArticleViewModelFactory articleViewModelFactory,
                              LocalizationService localizationService)
         {
+            // 通过依赖注入初始化服务和命令
             _newsService = newsService;
             _searchLineManagerService = searchLineManagerService;
             _articleViewModelFactory = articleViewModelFactory;
@@ -297,6 +304,7 @@ namespace NewsApp.ViewModel
             ShowTopHeadlines();
         }
 
+        // 加载元素
         private void LoadElements()
         {
             News_TextBlock = _localizationService.GetLocalizationValue(nameof(News_TextBlock));
@@ -325,7 +333,7 @@ namespace NewsApp.ViewModel
 
             SelectedCountry = SelectedCountry != null ?
                               Countries.Where(x => x.Value == SelectedCountry.Value).FirstOrDefault() :
-                              Countries.Where(x => x.Value == NewsAPI.Constants.Countries.US).FirstOrDefault();
+                              Countries.Where(x => x.Value == NewsAPI.Constants.Countries.CN).FirstOrDefault();
 
             Localizations.Clear();
             foreach (var item in _localizationService.GetLocalizedEnumValues<Localizations>())
@@ -354,7 +362,7 @@ namespace NewsApp.ViewModel
             }
         }
 
-
+        // 更新文章
         private void UpdateArticles(List<Article> articles)
         {
             Articles.Clear();
@@ -364,6 +372,7 @@ namespace NewsApp.ViewModel
             }
         }
 
+        // 检查搜索命令是否可以执行
         private bool CanSearchArticles()
         {
             return !string.IsNullOrEmpty(SearchLine);
@@ -374,8 +383,10 @@ namespace NewsApp.ViewModel
             var parsedSearchLine = _searchLineManagerService.ParseSearchQuery(SearchLine);
             var query = new EverythingRequest()
             {
+                // 设置关键字，如果没有关键字，则设置为null
                 Q = parsedSearchLine["KeyWord"].Count > 0 ? parsedSearchLine["KeyWord"].FirstOrDefault()
                                                           : null,
+                // 搜索域名
                 Domains = parsedSearchLine["Domain"]
             };
 
@@ -383,7 +394,7 @@ namespace NewsApp.ViewModel
             {
                 query.SortBy = SelectedSortFilter.Value;
             }
-
+            // 时间范围过滤
             if (IsTimeSpanEnabled)
             {
                 if (FromDateTime < ToDateTime)
@@ -394,13 +405,20 @@ namespace NewsApp.ViewModel
                 }
                 else
                 {
+                    // 如果起始时间不早于结束时间，则设置回调信息并返回
                     CallbackLine = _localizationService.GetLocalizationValue("IncorrectTimeSpan");
                     return;
                 }
             }
-
-            var result = await _newsService.GetArticlesByRequestAsync(query);
-            UpdateArticles(result);
+            try
+            {
+                var result = await _newsService.GetArticlesByRequestAsync(query);
+                UpdateArticles(result);
+            }
+            catch (Exception ex)
+            {
+                CallbackLine = "Error occurred while fetching articles.";
+            }
         }
 
         private void OpenArticleInBrowser(object obj)
