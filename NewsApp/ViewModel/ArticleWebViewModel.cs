@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System;
+using System.Collections.Generic;
 
 namespace NewsApp.ViewModel
 {
@@ -28,7 +29,7 @@ namespace NewsApp.ViewModel
             get { return articleSummary; }
             set
             {
-                articleSummary = value; 
+                articleSummary = value;
                 OnPropertyChanged();
             }
         }
@@ -41,17 +42,16 @@ namespace NewsApp.ViewModel
             using HttpClient client = new HttpClient();
             var content = new StringContent(JsonSerializer.Serialize(new { url = ArticleUrl }), Encoding.UTF8, "application/json");
 
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync("http://localhost:8000/summarize", content);
                 response.EnsureSuccessStatusCode();
 
                 string jsonResponse = await response.Content.ReadAsStringAsync();
-                // var result = JsonSerializer.Deserialize<SummaryResponse>(jsonResponse);
+                var result = JsonSerializer.Deserialize<SummaryResponse>(jsonResponse);
 
-                // ArticleSummary = result?.Summary;
-                ArticleSummary = jsonResponse?.ToString();
+                ArticleSummary = result?.Summary;
+                // ArticleSummary = jsonResponse?.ToString();
                 // ArticleSummary = response.ToString();
             }
             catch (Exception ex)
@@ -68,6 +68,12 @@ namespace NewsApp.ViewModel
         private class SummaryResponse
         {
             public string Summary { get; set; }
+            public List<Questions> RelatedQuestions { get; set; }
+        }
+
+        private class Questions
+        {
+            public String Question { get; set; }
         }
     }
 }
